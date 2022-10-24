@@ -1,0 +1,31 @@
+#define LDR A0
+#define led_green 2
+#define led_red 3
+
+void setup()
+{
+  Serial.begin (9600);
+  pinMode(LDR, INPUT);
+  pinMode (led_green, OUTPUT);
+  pinMode (led_red, OUTPUT);
+}
+
+void loop()
+{
+  int valore = analogRead (LDR);
+  Serial.println (valore);
+  delay (100);
+  
+  if (valore < 275 )
+  {
+    digitalWrite (led_green, HIGH);
+    digitalWrite (led_red, LOW);
+    delay (100);
+  }
+  else
+  {
+    digitalWrite (led_green, LOW);
+    digitalWrite (led_red, HIGH); 
+    delay (100);
+  }
+}
